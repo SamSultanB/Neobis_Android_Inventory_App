@@ -3,7 +3,12 @@ package com.example.inventory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.inventory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.bottomNavBar.setOnNavigationItemReselectedListener {
             when(it.itemId){
-                R.id.mainMenu -> setFragment(MainPageFragment())
-                R.id.archiveMenu -> setFragment(ArchivePageFragment())
+                R.id.mainPageFragment -> setFragment(MainPageFragment())
+                R.id.archivePageFragment -> setFragment(ArchivePageFragment())
                 else -> setFragment(ArchivePageFragment())
             }
         }
@@ -25,9 +30,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentHolder, fragment)
+            replace(R.id.fragmentContainerView, fragment)
             commit()
         }
     }
+
 
 }
