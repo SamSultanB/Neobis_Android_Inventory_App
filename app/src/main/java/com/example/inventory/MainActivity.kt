@@ -3,13 +3,9 @@ package com.example.inventory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.example.inventory.databinding.ActivityMainBinding
+import com.example.inventory.fragments.ArchivePageFragment
+import com.example.inventory.fragments.MainPageFragment
 
 class MainActivity : AppCompatActivity() {
 

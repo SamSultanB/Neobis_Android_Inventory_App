@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/archivePageFragment"
-        android:name="com.example.inventory.ArchivePageFragment"
+        android:name="com.example.inventory.fragments.ArchivePageFragment"
         android:label="fragment_archive_page"
         tools:layout="@layout/fragment_archive_page" >
     </fragment>
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.example.inventory.MainPageFragment"
+        android:name="com.example.inventory.fragments.MainPageFragment"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
 
