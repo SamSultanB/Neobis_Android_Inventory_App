@@ -1,8 +1,10 @@
 package com.example.inventory
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.inventory.databinding.ActivityMainBinding
 import com.example.inventory.fragments.ArchivePageFragment
 import com.example.inventory.fragments.MainPageFragment
@@ -30,6 +32,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
-
 
 }

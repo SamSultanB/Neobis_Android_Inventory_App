@@ -5,17 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.databinding.ItemBinding
-import com.example.inventory.model.Cross
+import com.example.inventory.model.Item
 
-class MyRecyclerViewAdapter(val crossList: ArrayList<Cross>): RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
+class MyRecyclerViewAdapter(val itemList: ArrayList<Item>): RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val binding = ItemBinding.bind(itemView)
-        fun bind(cross: Cross) = with(binding){
-            textName.text = cross.name
-            textBrand.text = cross.brand
-            textPrice.text = cross.price.toString()
-            textQuantity.text = cross.quantity.toString()
+        fun bind(item: Item) = with(binding){
+            textName.text = item.name
+            textBrand.text = item.brand
+            textPrice.text = item.price.toString()
+            textQuantity.text = item.quantity.toString()
         }
 
     }
@@ -27,12 +27,12 @@ class MyRecyclerViewAdapter(val crossList: ArrayList<Cross>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bind(crossList[position])
+        holder.bind(itemList[position])
 
     }
 
     override fun getItemCount(): Int {
-        return  crossList.size
+        return  itemList.size
     }
 
 

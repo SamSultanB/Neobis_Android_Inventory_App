@@ -5,13 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.inventory.MyRecyclerViewAdapter
-import com.example.inventory.databinding.FragmentArchivePageBinding
+import com.example.inventory.R
 import com.example.inventory.databinding.FragmentMainPageBinding
-import com.example.inventory.model.Cross
 
 class MainPageFragment : Fragment() {
 
@@ -28,7 +25,11 @@ class MainPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewMain.layoutManager = GridLayoutManager(this.context, 2)
-        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter(arrayListOf(Cross(1, "Nike", 15, "Nke", 15, false), Cross(1, "Nike", 15, "Nke", 15, false)))
+//        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter()
+
+        binding.addButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_createNewCrossFragment)
+        }
 
     }
 
