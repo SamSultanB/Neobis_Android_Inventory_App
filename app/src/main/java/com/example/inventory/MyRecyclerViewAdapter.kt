@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.databinding.ItemBinding
 import com.example.inventory.model.Item
 
-class MyRecyclerViewAdapter(val itemList: ArrayList<Item>): RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
+class MyRecyclerViewAdapter(val itemList: List<Item>): RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val binding = ItemBinding.bind(itemView)

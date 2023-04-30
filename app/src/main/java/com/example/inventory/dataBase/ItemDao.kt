@@ -1,5 +1,6 @@
 package com.example.inventory.dataBase
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -13,6 +14,5 @@ interface ItemDao {
     suspend fun addItem(item: Item)
 
     @Query("SELECT * FROM items")
-    fun getAllItems(): ArrayList<Item>
-
+    fun getAllItems(): List<Item>
 }
