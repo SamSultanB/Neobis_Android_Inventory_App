@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RestrictTo.Scope
+import androidx.core.view.drawToBitmap
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.R
@@ -52,19 +53,22 @@ class CreateNewCrossFragment : Fragment() {
         binding.addItemButton.setOnClickListener {
             insertItemToDB()
         }
+        binding.cancelButton.setOnClickListener {
+            findNavController().navigate(R.id.action_createNewCrossFragment_to_mainPageFragment)
+        }
     }
 
 
 
     private fun insertItemToDB() {
-//        val image = binding.gottenImage
+        val image = binding.gottenImage.drawToBitmap()
         val name = binding.inputName.text.toString()
         val price = binding.inputPrice.text.toString()
         val brand = binding.inputBrand.text.toString()
         val quantity = binding.inputQuantity.text.toString()
 
-        if(name != null && price != null && brand != null && quantity != null){
-            val item = Item(0, name, price.toInt(), brand, quantity.toInt(), false)
+        if(image!= null && name != null && price != null && brand != null && quantity != null){
+            val item = Item(0, name, price.toInt(), brand, quantity.toInt(), image,false)
             viewModel.addItem(item)
             Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_createNewCrossFragment_to_mainPageFragment)

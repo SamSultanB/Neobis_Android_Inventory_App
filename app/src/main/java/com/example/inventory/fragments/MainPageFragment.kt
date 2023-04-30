@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,14 +34,15 @@ class MainPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewMain.layoutManager = GridLayoutManager(this.context, 2)
-//        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter()
+        viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
+
+//        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter(viewModel.getAllItems())
+
 
         binding.addButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_createNewCrossFragment)
         }
 
-//        viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-//        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter(viewModel.getAllItems())
     }
 
 }

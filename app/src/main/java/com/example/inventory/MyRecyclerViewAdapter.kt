@@ -12,6 +12,7 @@ class MyRecyclerViewAdapter(val itemList: List<Item>): RecyclerView.Adapter<MyRe
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val binding = ItemBinding.bind(itemView)
         fun bind(item: Item) = with(binding){
+            image.setImageBitmap(item.image)
             textName.text = item.name
             textBrand.text = item.brand
             textPrice.text = item.price.toString()
