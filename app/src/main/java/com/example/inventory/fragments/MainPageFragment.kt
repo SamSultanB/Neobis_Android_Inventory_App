@@ -5,23 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.inventory.MyRecyclerViewAdapter
 import com.example.inventory.R
-import com.example.inventory.dataBase.ItemViewModel
 import com.example.inventory.databinding.FragmentMainPageBinding
 import com.example.inventory.model.Item
+import com.example.inventory.presenter.PresenterImpl
 
-class MainPageFragment : Fragment() {
+class MainPageFragment : Fragment(), com.example.inventory.view.View {
 
     lateinit var binding: FragmentMainPageBinding
-
-    private lateinit var viewModel: ItemViewModel
-
-    private lateinit var items: List<Item>
+    private lateinit var presenterImpl: PresenterImpl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,15 +28,18 @@ class MainPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewMain.layoutManager = GridLayoutManager(this.context, 2)
-        viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-
-//        binding.recyclerViewMain.adapter = MyRecyclerViewAdapter(viewModel.getAllItems())
-
-
         binding.addButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_createNewCrossFragment)
         }
 
     }
+
+    override fun showAllItems(items: List<Item>) {
+    }
+
+    override fun showError(error: String) {
+        TODO("Not yet implemented")
+    }
+
 
 }

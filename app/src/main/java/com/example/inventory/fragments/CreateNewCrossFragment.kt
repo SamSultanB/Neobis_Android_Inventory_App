@@ -1,5 +1,8 @@
 package com.example.inventory.fragments
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,22 +12,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RestrictTo.Scope
 import androidx.core.view.drawToBitmap
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.inventory.R
-import com.example.inventory.dataBase.ItemDao
-import com.example.inventory.dataBase.ItemViewModel
-import com.example.inventory.dataBase.Repository
 import com.example.inventory.databinding.FragmentCreateNewBinding
 import com.example.inventory.model.Item
+import com.example.inventory.presenter.PresenterImpl
 
-class CreateNewCrossFragment : Fragment() {
+class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
 
     lateinit var binding: FragmentCreateNewBinding
 
-    private lateinit var viewModel: ItemViewModel
+    lateinit var presenterImpl: PresenterImpl
 
     private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let { previewImage.setImageURI(uri) }
@@ -43,41 +41,45 @@ class CreateNewCrossFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenterImpl = PresenterImpl(requireContext())
+
         binding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.action_createNewCrossFragment_to_mainPageFragment)
+            findNavController().navigateUp()
         }
         binding.getImage.setOnClickListener {
             selectImageFromGallery()
         }
-        viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
         binding.addItemButton.setOnClickListener {
             insertItemToDB()
         }
         binding.cancelButton.setOnClickListener {
-            findNavController().navigate(R.id.action_createNewCrossFragment_to_mainPageFragment)
+            findNavController().navigateUp()
         }
     }
 
-
-
     private fun insertItemToDB() {
-        val image = binding.gottenImage.drawToBitmap()
+//        val image = binding.gottenImage.drawToBitmap()
         val name = binding.inputName.text.toString()
-        val price = binding.inputPrice.text.toString()
+        val price = binding.inputPrice.text.toString().trim().toInt()
         val brand = binding.inputBrand.text.toString()
-        val quantity = binding.inputQuantity.text.toString()
-
-        if(image!= null && name != null && price != null && brand != null && quantity != null){
-            val item = Item(0, name, price.toInt(), brand, quantity.toInt(), image,false)
-            viewModel.addItem(item)
-            Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_createNewCrossFragment_to_mainPageFragment)
-        }else{
-            Toast.makeText(requireContext(), "Fill out all fields!!", Toast.LENGTH_SHORT).show()
-        }
+        val quantity = binding.inputQuantity.text.toString().trim().toInt()
+        val item = Item(0, name, price, brand, quantity,false)
+        presenterImpl.addItem(item)
+        Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
+        findNavController().navigateUp()
     }
 
     //selects image from phone
     private fun selectImageFromGallery() = selectImageFromGalleryResult.launch("image/*")
+
+
+
+    override fun showAllItems(items: List<Item>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showError(error: String) {
+        TODO("Not yet implemented")
+    }
 
 }

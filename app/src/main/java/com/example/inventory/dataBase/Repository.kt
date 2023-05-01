@@ -1,6 +1,5 @@
 package com.example.inventory.dataBase
 
-import androidx.lifecycle.LiveData
 import com.example.inventory.model.Item
 
 class Repository(private val itemDao: ItemDao) {
@@ -10,7 +9,7 @@ class Repository(private val itemDao: ItemDao) {
         itemDao.addItem(item)
     }
 
-    fun getAllItems(): LiveData<List<Item>>{
+    suspend fun getAllItems(): List<Item>{
         return itemDao.getAllItems()
     }
 

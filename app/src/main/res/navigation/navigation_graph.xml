@@ -10,10 +10,8 @@
         android:name="com.example.inventory.fragments.ArchivePageFragment"
         android:label="fragment_archive_page"
         tools:layout="@layout/fragment_archive_page" >
-        <action
-            android:id="@+id/action_archivePageFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.example.inventory.fragments.MainPageFragment"
@@ -23,9 +21,6 @@
         <action
             android:id="@+id/action_mainPageFragment_to_createNewCrossFragment"
             app:destination="@id/createNewCrossFragment" />
-        <action
-            android:id="@+id/action_mainPageFragment_to_archivePageFragment"
-            app:destination="@id/archivePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/createNewCrossFragment"

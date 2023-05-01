@@ -47,7 +47,7 @@
             android:id="@+id/gottenImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_image"/>
+            android:src="@drawable/ic_image" />
 
     </androidx.cardview.widget.CardView>
 
@@ -56,11 +56,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginBottom="5dp"
         android:text="Item's name"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getImage" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/textInputLayout1"

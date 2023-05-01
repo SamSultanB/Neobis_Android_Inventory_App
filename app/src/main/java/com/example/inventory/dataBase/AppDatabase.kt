@@ -9,7 +9,7 @@ import com.example.inventory.model.Item
 @Database(entities = [Item::class], version = 1,  exportSchema = false)
 @androidx.room.TypeConverters(TypeConverter::class)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun crossDao(): ItemDao
+    abstract fun itemDao(): ItemDao
 
     companion object{
         @Volatile
