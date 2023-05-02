@@ -8,11 +8,12 @@ import com.example.inventory.model.Item
 
 
 @Dao
+@androidx.room.TypeConverters(TypeConverter::class)
 interface ItemDao {
 
     @Insert
     suspend fun addItem(item: Item)
 
     @Query("SELECT * FROM items")
-    suspend fun getAllItems(): List<Item>
+    fun getAllItems(): LiveData<List<Item>>
 }

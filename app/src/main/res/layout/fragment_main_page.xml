@@ -15,6 +15,7 @@
         android:text="Main"
         android:textColor="@color/black"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +26,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="104dp"
         android:background="@color/teal_200"
         app:cardCornerRadius="18dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +37,7 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:iconifiedByDefault="true"
-            />
+            android:iconifiedByDefault="true" />
 
     </androidx.cardview.widget.CardView>
 
@@ -46,8 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="21dp"
-        android:paddingStart="7dp"
-        android:paddingEnd="15dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

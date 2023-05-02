@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.drawToBitmap
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.databinding.FragmentCreateNewBinding
 import com.example.inventory.model.Item
@@ -58,12 +60,12 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
     }
 
     private fun insertItemToDB() {
-//        val image = binding.gottenImage.drawToBitmap()
+//        val image = Bitmap.createBitmap(binding.gottenImage.drawingCache)
         val name = binding.inputName.text.toString()
         val price = binding.inputPrice.text.toString().trim().toInt()
         val brand = binding.inputBrand.text.toString()
         val quantity = binding.inputQuantity.text.toString().trim().toInt()
-        val item = Item(0, name, price, brand, quantity,false)
+        val item = Item(0, name, price, brand, quantity, false)
         presenterImpl.addItem(item)
         Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
@@ -74,7 +76,7 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
 
 
 
-    override fun showAllItems(items: List<Item>) {
+    override fun showAllItems(items: LiveData<List<Item>>) {
         TODO("Not yet implemented")
     }
 
