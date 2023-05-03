@@ -8,7 +8,6 @@ import com.example.inventory.model.Item
 
 
 @Dao
-@androidx.room.TypeConverters(TypeConverter::class)
 interface ItemDao {
 
     @Insert

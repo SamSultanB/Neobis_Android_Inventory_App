@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CreateNewCrossFragment">
+    tools:context=".fragments.DetailsFragment">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:text="Add Item"
+        android:text="Details of item"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/backButton"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/getImage"
+        android:id="@+id/imageHolder"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="105dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <ImageView
-            android:id="@+id/gottenImage"
+            android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -62,7 +62,7 @@
         android:text="Item's name"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getImage" />
+        app:layout_constraintTop_toBottomOf="@+id/imageHolder" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/textInputLayout1"
@@ -75,10 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getImage">
+        app:layout_constraintTop_toBottomOf="@+id/imageHolder">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputName"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPrice"
+            android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputBrand"
+            android:id="@+id/brand"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -168,19 +168,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputQuantity"
+            android:id="@+id/quantity"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/addItemButton"
+        android:id="@+id/saveItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:text="   Add   "
+        android:text="   Save   "
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 

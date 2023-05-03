@@ -39,6 +39,13 @@ class MainPageFragment : Fragment(), com.example.inventory.view.View {
             findNavController().navigate(R.id.action_mainPageFragment_to_createNewCrossFragment)
         }
 
+        //Click to details page
+        adapter.onItemClickToDetails = {
+            val bundle = Bundle()
+            bundle.putParcelable(getString(R.string.bundleKey), it)
+            findNavController().navigate(R.id.action_mainPageFragment_to_detailsFragment, bundle)
+        }
+
     }
 
     override fun showAllItems(items: LiveData<List<Item>>) {

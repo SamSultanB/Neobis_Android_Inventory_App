@@ -27,7 +27,10 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
     lateinit var presenterImpl: PresenterImpl
 
     private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let { previewImage.setImageURI(uri) }
+        uri?.let {
+            val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
+            previewImage.setImageBitmap(bitmap)
+        }
     }
 
     private val previewImage by lazy { binding.gottenImage }
@@ -60,12 +63,12 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
     }
 
     private fun insertItemToDB() {
-//        val image = Bitmap.createBitmap(binding.gottenImage.drawingCache)
+        val image = binding.gottenImage.drawToBitmap()
         val name = binding.inputName.text.toString()
-        val price = binding.inputPrice.text.toString().trim().toInt()
+        val price = binding.inputPrice.text.toString().trim().toDouble()
         val brand = binding.inputBrand.text.toString()
         val quantity = binding.inputQuantity.text.toString().trim().toInt()
-        val item = Item(0, name, price, brand, quantity, false)
+        val item = Item(0, name, price, brand, quantity, image, false)
         presenterImpl.addItem(item)
         Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()

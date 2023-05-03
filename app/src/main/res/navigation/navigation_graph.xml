@@ -21,14 +21,20 @@
         <action
             android:id="@+id/action_mainPageFragment_to_createNewCrossFragment"
             app:destination="@id/createNewCrossFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/createNewCrossFragment"
         android:name="com.example.inventory.fragments.CreateNewCrossFragment"
         android:label="fragment_create_new"
         tools:layout="@layout/fragment_create_new" >
-        <action
-            android:id="@+id/action_createNewCrossFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.inventory.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
     </fragment>
 </navigation>
