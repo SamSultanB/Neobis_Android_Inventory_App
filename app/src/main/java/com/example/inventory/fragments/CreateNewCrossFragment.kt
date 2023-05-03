@@ -1,8 +1,5 @@
 package com.example.inventory.fragments
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -10,21 +7,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.drawToBitmap
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.databinding.FragmentCreateNewBinding
 import com.example.inventory.model.Item
-import com.example.inventory.presenter.PresenterImpl
+import com.example.inventory.presenter.PresenterMainImpl
+import com.example.inventory.presenter.PresenterNewItemImpl
+import com.example.inventory.view.ViewNewItem
 
-class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
+class CreateNewCrossFragment : Fragment(), ViewNewItem {
 
     lateinit var binding: FragmentCreateNewBinding
 
-    lateinit var presenterImpl: PresenterImpl
+    lateinit var presenterNewItemImpl: PresenterNewItemImpl
 
     private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -46,7 +43,7 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenterImpl = PresenterImpl(requireContext())
+        presenterNewItemImpl = PresenterNewItemImpl(requireContext())
 
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
@@ -68,9 +65,8 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
         val price = binding.inputPrice.text.toString().trim().toDouble()
         val brand = binding.inputBrand.text.toString()
         val quantity = binding.inputQuantity.text.toString().trim().toInt()
-        val item = Item(0, name, price, brand, quantity, image, false)
-        presenterImpl.addItem(item)
-        Toast.makeText(requireContext(), "Item is added!", Toast.LENGTH_SHORT).show()
+        val item = Item(0, name, price, brand, quantity, image, 1)
+        presenterNewItemImpl.addItem(item)
         findNavController().navigateUp()
     }
 
@@ -78,13 +74,13 @@ class CreateNewCrossFragment : Fragment(), com.example.inventory.view.View {
     private fun selectImageFromGallery() = selectImageFromGalleryResult.launch("image/*")
 
 
-
-    override fun showAllItems(items: LiveData<List<Item>>) {
-        TODO("Not yet implemented")
+    override fun showSuccess(successMessage: String) {
+        Toast.makeText(requireContext(), successMessage, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showError(error: String) {
-        TODO("Not yet implemented")
+    override fun showError(errorMessage: String) {
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
     }
+
 
 }

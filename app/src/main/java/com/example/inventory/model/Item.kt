@@ -18,5 +18,5 @@ data class Item(
     var brand: String,
     var quantity: Int,
     var image: Bitmap,
-    var archived: Boolean
+    var archived: Int,
 ) : Parcelable

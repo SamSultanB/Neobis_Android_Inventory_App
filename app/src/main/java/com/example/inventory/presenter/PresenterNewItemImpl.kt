@@ -1,30 +1,30 @@
 package com.example.inventory.presenter
 
-import android.content.ClipData
 import android.content.Context
-import android.provider.Settings.Global
 import com.example.inventory.dataBase.AppDatabase
 import com.example.inventory.dataBase.Repository
 import com.example.inventory.model.Item
-import com.example.inventory.view.View
-import kotlinx.coroutines.*
+import com.example.inventory.view.ViewNewItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class PresenterImpl(private val context: Context): Presenter {
+class PresenterNewItemImpl(private val context: Context): PresenterNewItem {
     private val db = AppDatabase.getDatabase(context).itemDao()
     private val repository = Repository(db)
-    private var view: View?=null
+    private var viewNewItem: ViewNewItem? = null
 
-    override fun getAllItems(){
-        view?.showAllItems(repository.items)
+    override fun attachView(viewNewItem: ViewNewItem) {
+        this.viewNewItem = viewNewItem
     }
 
     override fun addItem(item: Item) {
         GlobalScope.launch(Dispatchers.IO) {
             repository.addItem(item)
         }
+        viewNewItem?.showSuccess("Item is added")
+
     }
 
-    override fun attachView(view: View) {
-        this.view = view
-    }
+
 }

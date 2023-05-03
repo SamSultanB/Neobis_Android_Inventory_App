@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.inventory.model.Item
 
 
-interface View {
+interface ViewMain {
 
     fun showAllItems(items: LiveData<List<Item>>)
 
