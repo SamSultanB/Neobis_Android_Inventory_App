@@ -13,8 +13,7 @@ import androidx.core.view.drawToBitmap
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.databinding.FragmentCreateNewBinding
 import com.example.inventory.model.Item
-import com.example.inventory.presenter.PresenterMainImpl
-import com.example.inventory.presenter.PresenterNewItemImpl
+import com.example.inventory.presenter.presenterImpl.PresenterNewItemImpl
 import com.example.inventory.view.ViewNewItem
 
 class CreateNewCrossFragment : Fragment(), ViewNewItem {
@@ -65,7 +64,7 @@ class CreateNewCrossFragment : Fragment(), ViewNewItem {
         val price = binding.inputPrice.text.toString().trim().toDouble()
         val brand = binding.inputBrand.text.toString()
         val quantity = binding.inputQuantity.text.toString().trim().toInt()
-        val item = Item(0, name, price, brand, quantity, image, 1)
+        val item = Item(0, name, price, brand, quantity, image, 0)
         presenterNewItemImpl.addItem(item)
         findNavController().navigateUp()
     }

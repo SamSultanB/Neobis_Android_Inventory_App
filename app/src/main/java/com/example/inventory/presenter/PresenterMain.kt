@@ -8,6 +8,10 @@ interface PresenterMain {
 
     fun getAllItems()
 
+    fun update(item: Item)
+
+    fun delete(item: Item)
+
     fun attachView(viewMain: ViewMain)
 
 }

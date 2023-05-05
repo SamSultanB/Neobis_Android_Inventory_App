@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.drawToBitmap
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.R
 import com.example.inventory.databinding.FragmentDetailsBinding
 import com.example.inventory.model.Item
-import com.example.inventory.presenter.PresenterDetailsImpl
+import com.example.inventory.presenter.presenterImpl.PresenterDetailsImpl
 import com.example.inventory.view.ViewDetails
 
 class DetailsFragment : Fragment(), ViewDetails {
@@ -44,7 +46,18 @@ class DetailsFragment : Fragment(), ViewDetails {
         }
 
         binding.saveItemButton.setOnClickListener {
-            item?.id?.let { it1 -> updateItem(it1) }
+            val dialog = AlertDialog.Builder(requireContext())
+            dialog.apply {
+                setTitle("Do you want to change details?")
+                dialog.setPositiveButton("Yes"){ _ , _ ->
+                    item?.id?.let { it1 -> updateItem(it1) }
+                    Toast.makeText(requireActivity(), "Changes are saved!", Toast.LENGTH_SHORT ).show()
+                }
+                dialog.setNegativeButton("No"){ _, _ ->
+                    Toast.makeText(requireContext(), "Canceled", Toast.LENGTH_SHORT).show()
+                }
+            }.create()
+            dialog.show()
         }
 
     }
@@ -60,6 +73,7 @@ class DetailsFragment : Fragment(), ViewDetails {
         }
     }
 
+    //updates item's data
     fun updateItem(id: Int){
         val image = binding.image.drawToBitmap()
         val name = binding.name.text.toString()

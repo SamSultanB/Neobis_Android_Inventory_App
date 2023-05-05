@@ -13,6 +13,8 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
 
     var onItemClickToDetails: ((Item) -> Unit)? = null
 
+    var actionsButton: ((Item) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
         return ViewHolder(itemView)
@@ -23,6 +25,10 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
         holder.binding.apply {
             textName.setOnClickListener {  onItemClickToDetails?.invoke(itemList[position]) }
             image.setOnClickListener { onItemClickToDetails?.invoke(itemList[position]) }
+        }
+        //calls sheet buttons
+        holder.binding.actionsButton.setOnClickListener{
+            actionsButton?.invoke(itemList[position])
         }
     }
 

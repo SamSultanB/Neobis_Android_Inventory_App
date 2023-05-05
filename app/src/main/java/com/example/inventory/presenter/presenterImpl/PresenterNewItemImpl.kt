@@ -1,9 +1,10 @@
-package com.example.inventory.presenter
+package com.example.inventory.presenter.presenterImpl
 
 import android.content.Context
 import com.example.inventory.dataBase.AppDatabase
 import com.example.inventory.dataBase.Repository
 import com.example.inventory.model.Item
+import com.example.inventory.presenter.PresenterNewItem
 import com.example.inventory.view.ViewNewItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

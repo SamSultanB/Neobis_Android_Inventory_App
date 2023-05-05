@@ -10,4 +10,6 @@ interface ViewMain {
 
     fun showError(error: String)
 
+    fun showSuccess(message: String)
+
 }
