@@ -1,6 +1,7 @@
 package com.example.inventory.fragments
 
 import android.app.AlertDialog
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -52,15 +53,17 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
 
         //archives clicked item
         adapter.actionsButton = {
+
             val item = it
             val dialog = BottomSheetDialog(requireContext())
             val sheetBinding = BottomSheetDialogBinding.inflate(layoutInflater)
-            sheetBinding.archive.setText(R.string.archiveButton)
+            sheetBinding.archiveOrRestore.setText(R.string.archiveButton)
             dialog.setContentView(sheetBinding.root)
-            sheetBinding.archive.setOnClickListener {
+            sheetBinding.archiveOrRestore.setOnClickListener {
                 archiveItem(item)
                 dialog.dismiss()
             }
+
             sheetBinding.delete.setOnClickListener {
                 val provement = AlertDialog.Builder(requireContext())
                 provement.apply {
@@ -76,7 +79,9 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
                 provement.show()
             }
             dialog.show()
+
         }
+
 
     }
 
@@ -90,6 +95,7 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
     override fun showAllItems(items: LiveData<List<Item>>) {
         items.observe(viewLifecycleOwner, {itemList -> adapter.setItemList(itemList)})
     }
+
 
     override fun showError(error: String) {
         Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()

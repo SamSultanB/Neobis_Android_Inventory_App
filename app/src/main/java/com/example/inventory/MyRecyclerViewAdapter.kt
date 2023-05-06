@@ -21,7 +21,7 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(itemList[position])
+        holder.bind(itemList[position], position, itemList.size)
         holder.binding.apply {
             textName.setOnClickListener {  onItemClickToDetails?.invoke(itemList[position]) }
             image.setOnClickListener { onItemClickToDetails?.invoke(itemList[position]) }
@@ -30,6 +30,7 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
         holder.binding.actionsButton.setOnClickListener{
             actionsButton?.invoke(itemList[position])
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -43,12 +44,20 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val binding = ItemBinding.bind(itemView)
-        fun bind(item: Item) = with(binding){
+
+        fun bind(item: Item, position: Int, size: Int) = with(binding){
             image.setImageBitmap(item.image)
             textName.text = item.name
             textBrand.text = item.brand
             textPrice.text = item.price.toString()
             textQuantity.text = item.quantity.toString()
+
+            val layoutParams = itemView.layoutParams as RecyclerView.LayoutParams
+            if(position == size-1 && size % 2 != 0){
+                layoutParams.bottomMargin=50
+            }else if (position == size-1 || position == size-2 && size % 2 == 0){
+                layoutParams.bottomMargin=50
+            }
         }
     }
 
