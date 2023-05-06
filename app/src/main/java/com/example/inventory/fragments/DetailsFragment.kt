@@ -80,7 +80,7 @@ class DetailsFragment : Fragment(), ViewDetails {
         val price = binding.price.text.toString().trim().toDouble()
         val brand = binding.brand.text.toString()
         val quantity = binding.quantity.text.toString().trim().toInt()
-        val item = Item(id, name, price, brand, quantity, image, 1)
+        val item = Item(id, name, price, brand, quantity, image, 0)
         presenterDetailsImpl.update(item)
         findNavController().navigateUp()
 

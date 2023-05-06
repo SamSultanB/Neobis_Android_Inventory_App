@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp"
+    app:behavior_hideable="true"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:paddingBottom="25dp">
 
     <TextView
-        android:id="@+id/archive"
+        android:id="@+id/archiveOrRestore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="ArchvieAndRestore"
+        android:layout_marginTop="20dp"
+        android:text="ArchvieOrRestore"
+        android:textColor="@color/dark_blue"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,10 +25,11 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Delete"
+        android:textColor="@color/dark_blue"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/archive"
-        app:layout_constraintTop_toBottomOf="@+id/archive" />
+        app:layout_constraintStart_toStartOf="@+id/archiveOrRestore"
+        app:layout_constraintTop_toBottomOf="@+id/archiveOrRestore" />
 </androidx.constraintlayout.widget.ConstraintLayout>

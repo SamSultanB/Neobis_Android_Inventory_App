@@ -6,4 +6,6 @@
     <string name="pairs">Pairs</string>
     <string name="bundleKey">item</string>
     <string name="archiveButton">Archive</string>
+    <string name="restore">Restore</string>
+    <string name="deleteItem">You really want to delete this item?</string>
 </resources>
