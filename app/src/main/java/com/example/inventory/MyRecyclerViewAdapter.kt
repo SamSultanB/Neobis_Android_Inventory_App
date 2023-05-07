@@ -3,6 +3,7 @@ package com.example.inventory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.databinding.ItemBinding
 import com.example.inventory.model.Item
@@ -37,8 +38,11 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
         return  itemList.size
     }
 
-    fun setItemList(items: List<Item>){
-        this.itemList = items
+    fun setItemList(newItems: List<Item>){
+        val diffUtil = MyDiffUtils(itemList, newItems)
+        val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
+        this.itemList = newItems
+        diffUtilResult.dispatchUpdatesTo(this)
         notifyDataSetChanged()
     }
 

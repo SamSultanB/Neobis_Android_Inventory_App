@@ -41,6 +41,10 @@ class DetailsFragment : Fragment(), ViewDetails {
             setOldData(it)
         }
 
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         binding.cancelButton.setOnClickListener {
             findNavController().navigateUp()
         }

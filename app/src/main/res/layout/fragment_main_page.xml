@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:text="Main"
+        android:text="@string/main_page"
         android:textColor="@color/dark_blue"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -27,7 +27,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="104dp"
-        android:background="@color/teal_200"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:queryHint="Search..."
+            android:background="@color/editText"
             app:queryBackground="@android:color/transparent"
             app:iconifiedByDefault="false" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/recyclerViewMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="7dp"
         android:layout_marginEnd="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
