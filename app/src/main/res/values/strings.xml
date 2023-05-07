@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Inventory</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="currency">$</string>
     <string name="pairs">Pairs</string>
@@ -8,4 +7,14 @@
     <string name="archiveButton">Archive</string>
     <string name="restore">Restore</string>
     <string name="deleteItem">You really want to delete this item?</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="addItem">Add</string>
+    <string name="item_s_brand">Item\'s brand</string>
+    <string name="item_s_quantity">Item\'s quantity</string>
+    <string name="item_s_price">Item\'s price</string>
+    <string name="item_s_name">Item\'s name</string>
+    <string name="delete">Delete</string>
+    <string name="details_of_item">Details of item</string>
+    <string name="main_page">Main</string>
 </resources>
