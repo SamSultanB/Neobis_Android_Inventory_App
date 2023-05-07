@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -41,6 +42,18 @@ class ArchivePageFragment : Fragment(), ViewArchive {
         binding.recyclerViewArchive.adapter = adapter
         presenterArchiveImpl.attachView(this)
         presenterArchiveImpl.getAllArchived()
+
+        //calls search method
+        binding.searchViewArchive.setOnQueryTextListener(object : OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                presenterArchiveImpl.searchItem(newText)
+                return true
+            }
+        })
 
         adapter.actionsButton = {
             val item = it
@@ -78,6 +91,24 @@ class ArchivePageFragment : Fragment(), ViewArchive {
 
     override fun showAllArchived(items: LiveData<List<Item>>) {
         items.observe(viewLifecycleOwner, {itemList -> adapter.setItemList(itemList)})
+    }
+
+    override fun searchItem(query: String, items: LiveData<List<Item>>) {
+        items.observe(viewLifecycleOwner, { listItems ->
+            if(query != null){
+                val filtered = ArrayList<Item>()
+                for (i in listItems){
+                    if (i.name.lowercase().contains(query.lowercase()) || i.brand.lowercase().contains(query.lowercase())){
+                        filtered.add(i)
+                    }
+                }
+                if (filtered.isEmpty()){
+                    Toast.makeText(requireContext(), "Item is not found", Toast.LENGTH_SHORT).show()
+                }else{
+                    adapter.setItemList(filtered)
+                }
+            }
+        })
     }
 
     override fun showSuccess(successMessage: String) {

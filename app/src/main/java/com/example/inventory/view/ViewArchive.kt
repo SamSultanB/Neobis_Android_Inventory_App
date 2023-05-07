@@ -7,6 +7,8 @@ interface ViewArchive {
 
     fun showAllArchived(items: LiveData<List<Item>>)
 
+    fun searchItem(query: String, items: LiveData<List<Item>>)
+
     fun showSuccess(successMessage: String)
 
     fun showError(errorMessage: String)

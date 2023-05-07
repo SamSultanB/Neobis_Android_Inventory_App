@@ -37,7 +37,9 @@
             android:id="@+id/searchViewArchive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:iconifiedByDefault="true" />
+            app:queryHint="Search..."
+            app:queryBackground="@android:color/transparent"
+            app:iconifiedByDefault="false" />
 
     </androidx.cardview.widget.CardView>
 

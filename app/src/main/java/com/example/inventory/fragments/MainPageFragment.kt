@@ -1,13 +1,13 @@
 package com.example.inventory.fragments
 
 import android.app.AlertDialog
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,6 +18,8 @@ import com.example.inventory.databinding.FragmentMainPageBinding
 import com.example.inventory.model.Item
 import com.example.inventory.presenter.presenterImpl.PresenterMainImpl
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
 
@@ -51,6 +53,18 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
             findNavController().navigate(R.id.action_mainPageFragment_to_detailsFragment, bundle)
         }
 
+        //searches item
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                presenterMainImpl.searchItem(newText)
+                return true
+            }
+        })
+
+
         //archives clicked item
         adapter.actionsButton = {
 
@@ -82,8 +96,8 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
 
         }
 
-
     }
+
 
 
     fun archiveItem(item: Item){
@@ -93,7 +107,28 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
 
 
     override fun showAllItems(items: LiveData<List<Item>>) {
-        items.observe(viewLifecycleOwner, {itemList -> adapter.setItemList(itemList)})
+        items.observe(viewLifecycleOwner, {
+                itemList -> adapter.setItemList(itemList)
+        })
+    }
+
+    //searchs item
+    override fun searchItem(query: String, items: LiveData<List<Item>>) {
+        items.observe(viewLifecycleOwner, { itemsList ->
+            if(query != null){
+                val filtered = ArrayList<Item>()
+                for (i in itemsList){
+                    if (i.name.lowercase().contains(query.lowercase()) || i.brand.lowercase().contains(query.lowercase())){
+                        filtered.add(i)
+                    }
+                }
+                if (filtered.isEmpty()){
+                    Toast.makeText(requireContext(), "Item is not found", Toast.LENGTH_SHORT).show()
+                }else{
+                    adapter.setItemList(filtered)
+                }
+            }
+        })
     }
 
 
