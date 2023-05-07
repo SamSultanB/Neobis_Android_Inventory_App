@@ -8,6 +8,8 @@ interface PresenterMain {
 
     fun getAllItems()
 
+    fun searchItem(query: String)
+
     fun update(item: Item)
 
     fun delete(item: Item)

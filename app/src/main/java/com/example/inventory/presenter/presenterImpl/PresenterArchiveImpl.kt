@@ -21,6 +21,10 @@ class PresenterArchiveImpl(private val context: Context): PresenterArchive {
         viewArchive?.showAllArchived(repository.archivedItems)
     }
 
+    override fun searchItem(query: String) {
+        viewArchive?.searchItem(query, repository.archivedItems)
+    }
+
     override fun update(item: Item) {
         GlobalScope.launch(Dispatchers.IO) {
             repository.updateItem(item)

@@ -19,6 +19,10 @@ class PresenterMainImpl(private val context: Context): PresenterMain {
         viewMain?.showAllItems(repository.items)
     }
 
+    override fun searchItem(query: String) {
+        viewMain?.searchItem(query, repository.items)
+    }
+
     override fun update(item: Item) {
         GlobalScope.launch(Dispatchers.IO){
             repository.updateItem(item)

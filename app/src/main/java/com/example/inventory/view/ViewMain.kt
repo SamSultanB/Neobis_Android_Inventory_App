@@ -8,6 +8,8 @@ interface ViewMain {
 
     fun showAllItems(items: LiveData<List<Item>>)
 
+    fun searchItem(query: String, items: LiveData<List<Item>>)
+
     fun showError(error: String)
 
     fun showSuccess(message: String)

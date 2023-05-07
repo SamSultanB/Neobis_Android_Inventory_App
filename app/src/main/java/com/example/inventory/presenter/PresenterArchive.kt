@@ -7,6 +7,8 @@ interface PresenterArchive {
 
     fun getAllArchived()
 
+    fun searchItem(query: String)
+
     fun update(item: Item)
 
     fun delete(item: Item)

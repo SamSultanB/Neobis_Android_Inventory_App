@@ -54,9 +54,11 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
 
             val layoutParams = itemView.layoutParams as RecyclerView.LayoutParams
             if(position == size-1 && size % 2 != 0){
-                layoutParams.bottomMargin=50
+                layoutParams.bottomMargin = 50
             }else if (position == size-1 || position == size-2 && size % 2 == 0){
-                layoutParams.bottomMargin=50
+                layoutParams.bottomMargin = 50
+            }else{
+                layoutParams.bottomMargin = 0
             }
         }
     }
