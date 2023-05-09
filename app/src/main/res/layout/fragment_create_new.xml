@@ -90,6 +90,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_name"
+                android:singleLine = "true"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/inputPrice"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -122,9 +125,13 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputPrice"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_price"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/inputBrand"
+                android:singleLine = "true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -160,6 +167,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_brand"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/inputQuantity"
+                android:singleLine = "true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -192,9 +202,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputQuantity"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_amount"
+                android:imeOptions="actionDone"
+                android:singleLine = "true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
