@@ -17,4 +17,10 @@
     <string name="delete">Delete</string>
     <string name="details_of_item">Details of item</string>
     <string name="main_page">Main</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="enter_price">Enter price</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_brand">Enter brand</string>
+    <string name="empty_fields_warning">Please, fill out all fields!</string>
+    <string name="successfully_changed">Changes are saved!</string>
 </resources>

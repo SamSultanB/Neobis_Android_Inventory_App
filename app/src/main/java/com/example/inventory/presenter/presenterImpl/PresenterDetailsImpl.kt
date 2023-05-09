@@ -26,4 +26,6 @@ class PresenterDetailsImpl(private val context: Context): PresenterDetails {
         }
         viewDetails?.showSuccess("Item is updated")
     }
+
+
 }

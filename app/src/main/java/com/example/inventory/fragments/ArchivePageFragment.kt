@@ -101,7 +101,7 @@ class ArchivePageFragment : Fragment(), ViewArchive {
                         filtered.add(i)
                     }
                 }
-                if (filtered.isEmpty()){
+                if (!listItems.isEmpty() && filtered.isEmpty()){
                     Toast.makeText(requireContext(), "Item is not found", Toast.LENGTH_SHORT).show()
                 }else{
                     adapter.setItemList(filtered)

@@ -18,7 +18,6 @@ import com.example.inventory.databinding.FragmentMainPageBinding
 import com.example.inventory.model.Item
 import com.example.inventory.presenter.presenterImpl.PresenterMainImpl
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
@@ -122,7 +121,7 @@ class MainPageFragment : Fragment(), com.example.inventory.view.ViewMain {
                         filtered.add(i)
                     }
                 }
-                if (filtered.isEmpty()){
+                if (!itemsList.isEmpty() && filtered.isEmpty()){
                     Toast.makeText(requireContext(), "Item is not found", Toast.LENGTH_SHORT).show()
                 }else{
                     adapter.setItemList(filtered)

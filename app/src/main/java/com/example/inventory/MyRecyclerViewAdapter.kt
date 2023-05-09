@@ -43,7 +43,7 @@ class MyRecyclerViewAdapter: RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHold
         val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
         this.itemList = newItems
         diffUtilResult.dispatchUpdatesTo(this)
-        notifyDataSetChanged()
+//        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

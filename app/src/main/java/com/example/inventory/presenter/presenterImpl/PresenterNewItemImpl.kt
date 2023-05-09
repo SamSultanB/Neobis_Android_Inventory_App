@@ -6,9 +6,7 @@ import com.example.inventory.dataBase.Repository
 import com.example.inventory.model.Item
 import com.example.inventory.presenter.PresenterNewItem
 import com.example.inventory.view.ViewNewItem
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class PresenterNewItemImpl(private val context: Context): PresenterNewItem {
     private val db = AppDatabase.getDatabase(context).itemDao()
@@ -24,7 +22,6 @@ class PresenterNewItemImpl(private val context: Context): PresenterNewItem {
             repository.addItem(item)
         }
         viewNewItem?.showSuccess("Item is added")
-
     }
 
 

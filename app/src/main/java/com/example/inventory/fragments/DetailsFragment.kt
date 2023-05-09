@@ -55,7 +55,6 @@ class DetailsFragment : Fragment(), ViewDetails {
                 setTitle("Do you want to change details?")
                 dialog.setPositiveButton("Yes"){ _ , _ ->
                     item?.id?.let { it1 -> updateItem(it1) }
-                    Toast.makeText(requireActivity(), "Changes are saved!", Toast.LENGTH_SHORT ).show()
                 }
                 dialog.setNegativeButton("No"){ _, _ ->
                     Toast.makeText(requireContext(), "Canceled", Toast.LENGTH_SHORT).show()
@@ -79,23 +78,33 @@ class DetailsFragment : Fragment(), ViewDetails {
 
     //updates item's data
     fun updateItem(id: Int){
-        val image = binding.image.drawToBitmap()
-        val name = binding.name.text.toString()
-        val price = binding.price.text.toString().trim().toDouble()
-        val brand = binding.brand.text.toString()
-        val quantity = binding.quantity.text.toString().trim().toInt()
-        val item = Item(id, name, price, brand, quantity, image, 0)
-        presenterDetailsImpl.update(item)
-        findNavController().navigateUp()
+        if(binding.image.drawable != null
+            && !binding.name.text.isNullOrBlank()
+            && !binding.price.text.isNullOrBlank()
+            && !binding.brand.text.isNullOrBlank()
+            && !binding.quantity.text.isNullOrBlank())
+        {
+            val image = binding.image.drawToBitmap()
+            val name = binding.name.text.toString()
+            val price = binding.price.text.toString().trim().toDouble()
+            val brand = binding.brand.text.toString()
+            val quantity = binding.quantity.text.toString().trim().toInt()
+            val item = Item(id, name, price, brand, quantity, image, 0)
+            presenterDetailsImpl.update(item)
+            Toast.makeText(requireActivity(), getString(R.string.successfully_changed), Toast.LENGTH_SHORT ).show()
+            findNavController().navigateUp()
+        }else{
+            Toast.makeText(requireContext(), getString(R.string.empty_fields_warning), Toast.LENGTH_SHORT).show()
+        }
 
     }
 
     override fun showSuccess(successMessage: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), successMessage, Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(errorMessage: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
     }
 
 }

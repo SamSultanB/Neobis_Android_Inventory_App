@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.drawToBitmap
 import androidx.navigation.fragment.findNavController
+import com.example.inventory.R
 import com.example.inventory.databinding.FragmentCreateNewBinding
 import com.example.inventory.model.Item
 import com.example.inventory.presenter.presenterImpl.PresenterNewItemImpl
@@ -59,14 +60,25 @@ class CreateNewCrossFragment : Fragment(), ViewNewItem {
     }
 
     private fun insertItemToDB() {
-        val image = binding.gottenImage.drawToBitmap()
-        val name = binding.inputName.text.toString()
-        val price = binding.inputPrice.text.toString().trim().toDouble()
-        val brand = binding.inputBrand.text.toString()
-        val quantity = binding.inputQuantity.text.toString().trim().toInt()
-        val item = Item(0, name, price, brand, quantity, image, 0)
-        presenterNewItemImpl.addItem(item)
-        findNavController().navigateUp()
+        if(binding.gottenImage.drawable != null
+            && !binding.inputName.text.isNullOrBlank()
+            && !binding.inputPrice.text.isNullOrBlank()
+            && !binding.inputBrand.text.isNullOrBlank()
+            && !binding.inputQuantity.text.isNullOrBlank())
+        {
+            val image = binding.gottenImage.drawToBitmap()
+            val name = binding.inputName.text.toString()
+            val price = binding.inputPrice.text.toString().trim().toDouble()
+            val brand = binding.inputBrand.text.toString()
+            val quantity = binding.inputQuantity.text.toString().trim().toInt()
+            val item = Item(0, name, price, brand, quantity, image, 0)
+            presenterNewItemImpl.addItem(item)
+            findNavController().navigateUp()
+        }else{
+            Toast.makeText(requireContext(), getString(R.string.empty_fields_warning), Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
     //selects image from phone
@@ -75,6 +87,7 @@ class CreateNewCrossFragment : Fragment(), ViewNewItem {
 
     override fun showSuccess(successMessage: String) {
         Toast.makeText(requireContext(), successMessage, Toast.LENGTH_SHORT).show()
+        findNavController().navigateUp()
     }
 
     override fun showError(errorMessage: String) {

@@ -73,14 +73,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout1"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="49dp"
             android:layout_marginEnd="16dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
             app:boxStrokeWidth="0dp"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,8 +87,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/editText"
+                android:layout_height="match_parent"
+                android:hint="@string/enter_name"
+                android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
 
@@ -112,17 +109,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="39dp"
             android:layout_marginEnd="16dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
             app:boxStrokeWidth="0dp"
             app:hintEnabled="false"
-            android:background="@color/editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout1"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
@@ -131,7 +123,8 @@
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/editText"
+                android:hint="@string/enter_price"
+                android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
 
@@ -151,17 +144,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="39dp"
             android:layout_marginEnd="16dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
             app:boxStrokeWidth="0dp"
             app:hintEnabled="false"
-            android:background="@color/editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -170,7 +158,8 @@
                 android:id="@+id/brand"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/editText"
+                android:hint="@string/enter_brand"
+                android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
 
@@ -194,13 +183,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="39dp"
             android:layout_marginEnd="16dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
             app:boxStrokeWidth="0dp"
             app:hintEnabled="false"
-            android:background="@color/editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -209,7 +193,8 @@
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/editText"
+                android:hint="@string/enter_amount"
+                android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
 
@@ -221,8 +206,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/save"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/add_button"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
@@ -232,9 +219,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
             android:text="@string/cancel"
             android:textColor="@color/purple_700"
-            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
