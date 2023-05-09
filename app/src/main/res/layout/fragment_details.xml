@@ -89,6 +89,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_name"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/price"
+                android:singleLine="true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -121,9 +124,13 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/price"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_price"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/brand"
+                android:singleLine="true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -159,6 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_brand"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/quantity"
+                android:singleLine="true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
@@ -191,9 +201,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/quantity"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_amount"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:background="@drawable/rounded_corner"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
